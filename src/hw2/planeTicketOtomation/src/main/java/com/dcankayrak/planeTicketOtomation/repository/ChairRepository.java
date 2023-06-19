@@ -20,10 +20,10 @@ public class ChairRepository {
         this.chairs.add(new Chair("A8"));
 
         // Business Class
-        this.chairs.add(new Chair("B1"));
-        this.chairs.add(new Chair("B2"));
-        this.chairs.add(new Chair("B3"));
-        this.chairs.add(new Chair("B4"));
+        this.chairs.add(new Chair("B1",true));
+        this.chairs.add(new Chair("B2",true));
+        this.chairs.add(new Chair("B3",true));
+        this.chairs.add(new Chair("B4",true));
     }
 
     public List<Chair> getChairs(){

@@ -52,7 +52,7 @@ public class AirlineSystem {
 
             selected.getChairs().stream()
                     .filter(c -> c.getCustomer() == null)
-                    .forEach(chair -> System.out.println(chair.getName()));
+                    .forEach(chair -> System.out.println(chair));
 
             System.out.println("------------------------------");
             System.out.println("Almak istediğiniz koltuk numarasını giriniz :");
@@ -70,7 +70,7 @@ public class AirlineSystem {
     }
     private void mainMenu(){
         System.out.println("------------------------------");
-        System.out.println("Tüm uçuşları görmek için 1'e\nBilet almak için 2'yi giriniz.");
+        System.out.println("Tüm uçuşları görmek için 1'i\nBilet almak için 2'yi\nÇıkış yapmak için 0'ı giriniz.");
         System.out.println("Yapmak istediğiniz işlemi giriniz");
     }
     private void listAllFlights(){

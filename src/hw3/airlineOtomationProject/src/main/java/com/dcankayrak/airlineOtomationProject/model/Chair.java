@@ -1,4 +1,4 @@
-package com.dcankayrak.planeTicketOtomation.model;
+package com.dcankayrak.airlineOtomationProject.model;
 
 import lombok.Getter;
 import lombok.Setter;

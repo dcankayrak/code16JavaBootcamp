@@ -21,7 +21,6 @@ public class FlightRepository {
                 .flightNumber("A123")
                 .planeName("BOEING_A320")
                 .company(new THY())
-                .price(new BigDecimal(750))
                 .chairs(chairRepository.getChairs())
                 .to("Amsterdam")
                 .from("Ankara")

@@ -17,17 +17,17 @@ public class Flight {
     private String planeName;
     private String status;
     private Company company;
-    private BigDecimal price;
     private List<Chair> chairs;
 
     @Override
     public String toString() {
         return "Flight{" +
                 "flightNumber='" + flightNumber + '\'' +
-                ", plane=" + planeName +
+                ", from='" + from + '\'' +
+                ", to='" + to + '\'' +
+                ", planeName='" + planeName + '\'' +
                 ", status='" + status + '\'' +
                 ", company=" + company +
-                ", price=" + price +
                 '}';
     }
 }
