@@ -1,6 +1,8 @@
 package com.dcankayrak.airlineOtomationProject.service;
 
 import com.dcankayrak.airlineOtomationProject.converter.FlightConverter;
+import com.dcankayrak.airlineOtomationProject.exception.CustomerNotFoundException;
+import com.dcankayrak.airlineOtomationProject.exception.FlightNotFoundException;
 import com.dcankayrak.airlineOtomationProject.model.Customer;
 import com.dcankayrak.airlineOtomationProject.model.Flight;
 import com.dcankayrak.airlineOtomationProject.repository.CustomerRepository;
@@ -26,13 +28,13 @@ public class FlightService {
     }
 
     public FlightListItemDto getFlightWithFlightNumber(String flightNumber) {
-        FlightListItemDto flight = flightConverter.convertFlightToFlightListItemDto(this.flightRepository.findByFlightNumber(flightNumber));
+        FlightListItemDto flight = flightConverter.convertFlightToFlightListItemDto(this.flightRepository.findByFlightNumber(flightNumber).get());
         return flight;
     }
 
     public boolean bookFlight(String flightNumber,Long userId){
-        Customer customer = customerRepository.findById(userId).orElseThrow();
-        Flight flight = this.flightRepository.findByFlightNumber(flightNumber);
+        Flight flight = this.flightRepository.findByFlightNumber(flightNumber).orElseThrow(() -> {throw new FlightNotFoundException("Aradığınız uçuş numarasına sahip uçuş bulunammadı!");});
+        Customer customer = customerRepository.findById(userId).orElseThrow(() -> {throw new CustomerNotFoundException("Kullanıcı Bulunmadı!");});
 
         if(flight != null){
             flight.getCustomers().add(customer);
@@ -55,7 +57,7 @@ public class FlightService {
     }
 
     public void deleteFlight(String flightNumber) {
-        Flight f = this.flightRepository.findByFlightNumber(flightNumber);
+        Flight f = this.flightRepository.findByFlightNumber(flightNumber).orElseThrow(() -> {throw new FlightNotFoundException("Aradığınız uçuş numarasına sahip uçuş bulunammadı!");});
         this.flightRepository.delete(f);
     }
 }
